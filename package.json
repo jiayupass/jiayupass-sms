@@ -1,0 +1,40 @@
+{
+  "name": "sms",
+  "license": "UNLICENSED",
+  "private": true,
+  "version": "0.0.1",
+  "description": "服务端",
+  "author": {
+    "name": "Lau, Kamas",
+    "email": "kamaslau@outlook.com"
+  },
+  "engines": {
+    "node": "^18 || >=18"
+  },
+  "main": "dist/app.js",
+  "scripts": {
+    "build": "tsc",
+    "db:pull": "npx prisma db pull && npx prisma generate",
+    "db:push": "npx prisma db push && npx prisma generate",
+    "format": "ts-standard --fix src/**/*.ts",
+    "start": "NODE_ENV=production node dist/app.js",
+    "start:dev": "cross-env nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@koa/router": "^10.1.1",
+    "@prisma/client": "^4.2.1",
+    "dotenv": "^16.0.1",
+    "koa": "^2.13.4",
+    "koa-bodyparser": "^4.3.0",
+    "node-cron": "^3.0.2",
+    "node-fetch": "^2.6.7"
+  },
+  "devDependencies": {
+    "@tsconfig/node18": "latest",
+    "@types/koa": "^2.13.5",
+    "@types/koa-bodyparser": "^4.3.7",
+    "@types/node": "latest",
+    "prisma": "^4.2.1"
+  }
+}

@@ -1,0 +1,66 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model sensor {
+  id           Int             @id @default(autoincrement()) @db.UnsignedInt
+  name         String          @db.VarChar(30)
+  time_created DateTime        @default(now()) @db.Timestamp(0)
+  time_updated DateTime        @default(now()) @db.Timestamp(0)
+  time_deleted DateTime?       @db.Timestamp(0)
+  records      sensor_record[]
+
+  @@index([name], map: "name")
+}
+
+model sensor_record {
+  id           Int       @id @default(autoincrement()) @db.UnsignedInt
+  sensor_id    Int?      @db.UnsignedInt
+  content      String    @db.VarChar(255)
+  time_created DateTime  @default(now()) @db.Timestamp(0)
+  time_updated DateTime  @default(now()) @db.Timestamp(0)
+  time_deleted DateTime? @db.Timestamp(0)
+  sensor       sensor?   @relation(fields: [sensor_id], references: [id])
+
+  @@index([sensor_id], map: "sensor_id")
+}
+
+model sms {
+  id           Int       @id @default(autoincrement()) @db.UnsignedInt
+  mobile       String    @db.VarChar(11)
+  content      String    @db.VarChar(255)
+  captcha      String?   @db.VarChar(6)
+  status       String    @default("VALID") @db.VarChar(255)
+  time_created DateTime  @default(now()) @db.Timestamp(0)
+  time_deleted DateTime? @db.Timestamp(0)
+  time_expire  Int?      @db.UnsignedInt
+  time_sent    Int       @db.UnsignedInt
+  time_updated DateTime  @default(now()) @db.Timestamp(0)
+
+  @@index([mobile], map: "mobile")
+  @@index([time_expire, captcha, status])
+  @@index([time_expire], map: "time_expire")
+}
+
+model user {
+  id            Int       @id @default(autoincrement()) @db.UnsignedInt
+  mobile        String    @unique(map: "mobile") @db.VarChar(11)
+  name          String?   @db.VarChar(30)
+  nickName      String?   @db.VarChar(10)
+  avatar        String?   @db.VarChar(255)
+  gender        String    @default("unset") @db.VarChar(5)
+  password      String?   @db.VarChar(64)
+  wechatSession String?   @db.VarChar(255)
+  wechatUnionid String?   @unique(map: "wechatUnionid") @db.VarChar(255)
+  weappOpenId   String?   @unique(map: "weappOpenId") @db.VarChar(255)
+  time_created  DateTime  @default(now()) @db.Timestamp(0)
+  time_updated  DateTime  @default(now()) @db.Timestamp(0)
+  time_deleted  DateTime? @db.Timestamp(0)
+
+  @@index([name], map: "name")
+}
