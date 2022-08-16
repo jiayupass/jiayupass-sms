@@ -5,6 +5,7 @@
 ```shell
 cp .env_template .env
 pnpm install
+pnpm db:pull
 pnpm start
 ```
 

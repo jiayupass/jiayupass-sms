@@ -23,7 +23,7 @@
 # docker load -i <local-image-name>.tar
 #
 # Run with
-# docker container run --name <local-image-name> -d -p 3000:3000 <container-name>
+# docker container run --name <local-image-name> --restart=always -d -p 3000:3000 <container-name>
 FROM node:18-slim
 LABEL maintainer="Kamas Lau<kamaslau@dingtalk.com>"
 
@@ -35,13 +35,19 @@ LABEL maintainer="Kamas Lau<kamaslau@dingtalk.com>"
 
 WORKDIR /root/app
 
+COPY prisma ./prisma/
 COPY src ./src/
-COPY .env_template ./.env
+COPY types ./types/
+# COPY .env_template ./.env
+COPY .env ./
 COPY package.json ./
 COPY pnpm-lock.yaml ./
+COPY tsconfig.json ./
 
 RUN npm i -g pnpm@latest && \
-  pnpm i
+  pnpm i && \
+  pnpm db:pull && \
+  pnpm build
 
 EXPOSE 3000
 

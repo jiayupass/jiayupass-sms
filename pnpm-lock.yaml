@@ -13,6 +13,7 @@ specifiers:
   node-cron: ^3.0.2
   node-fetch: ^2.6.7
   prisma: ^4.2.1
+  typescript: latest
 
 dependencies:
   '@koa/router': 10.1.1
@@ -29,6 +30,7 @@ devDependencies:
   '@types/koa-bodyparser': 4.3.7
   '@types/node': 18.7.6
   prisma: 4.2.1
+  typescript: 4.7.4
 
 packages:
 
@@ -596,6 +598,12 @@ packages:
       media-typer: 0.3.0
       mime-types: 2.1.35
     dev: false
+
+  /typescript/4.7.4:
+    resolution: {integrity: sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==}
+    engines: {node: '>=4.2.0'}
+    hasBin: true
+    dev: true
 
   /unpipe/1.0.0:
     resolution: {integrity: sha1-sr9O6FFKrmFltIF4KdIbLvSZBOw=}
