@@ -20,7 +20,7 @@ const sha256Hmac = (source: crypto.BinaryLike, key: string = ''): string => {
 }
 
 const base64 = (source: string): string => {
-  console.log('base64: ', source)
+  // console.log('base64: ', source)
 
   const hash = Buffer.from(source).toString('base64')
 

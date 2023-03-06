@@ -1,12 +1,11 @@
 // External
 import 'dotenv/config' // 载入.env环境配置文件
 import Koa from 'koa'
-import bodyParser from 'koa-bodyparser' // 处理json和x-www-form-urlencoded
+import bodyParser from 'koa-bodyparser'
 
 // Local
 import appRouter from './routes' // 路由
 import { consoleInit, consoleStart, briefLog } from './utils'
-
 
 // 输出程序初始化信息
 // console.log('process.env: ', process.env)
@@ -21,23 +20,25 @@ const app = new Koa()
 app.use(briefLog)
 
 // 兜底错误处理
-app.on('error', (error, ctx): void => {
-  console.error('server error: ', error)
+app.on('error', (error, ctx) => {
+  // console.error('server error: ', error)
 
-  ctx.status = error.code ?? 501
-  ctx.body = { content: error.message }
+  ctx.body = {
+    message: (error.message ?? '服务端无法处理该请求')
+  }
 })
 
-// 解析入栈请求的body部分
-app.use(bodyParser({ jsonLimit: '4mb' }))
-// if (isDev) {
-//   app.use(async (ctx, next) => {
-//     // console.log(ctx.request.body)
-//     ctx.body = ctx.request.body
+// 核验请求方式
+app.use(async (ctx, next) => {
+  if (ctx.method !== 'POST') {
+    ctx.throw(405, `Request method ${ctx.method} is not allowed.`)
+  } else {
+    await next()
+  }
+})
 
-//     await next()
-//   })
-// }
+// 解析请求的body部分
+app.use(bodyParser())
 
 /**
  * RESTful
@@ -45,9 +46,9 @@ app.use(bodyParser({ jsonLimit: '4mb' }))
 app.use(appRouter.routes()).use(appRouter.allowedMethods())
 
 // 兜底路由
-app.use(async (ctx, next) => {
+app.use(async ctx => {
   ctx.status = 200
-  ctx.body = { data: 'Hello, World!', figureURL: 'https://http.cat/200' }
+  ctx.body = { message: 'Hello, World!', figureURL: 'https://http.cat/200' }
 })
 
 // 启动服务

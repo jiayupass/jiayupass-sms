@@ -34,9 +34,12 @@ const composeCaptchaMsg = (): { message: string, captcha?: string } => {
   }
   const captchaCode = getRandomIntInclusive(100000, 999999).toString()
 
-  const result = { message: `${captchaCode} 是您的验证码，3分钟内有效；若非您已知、理解，且自愿、主动进行的操作导致收到此信息，请勿理会或转发。`, captcha: captchaCode }
+  const captchaTemplate = "### 是您的验证码，3分钟内有效；若非您已知、理解，且自愿、主动进行的操作导致收到此信息，请勿理会或转发。"
+  const message = captchaTemplate.replace("###", captchaCode)
 
-  console.log('composeCaptchaMsg result: ', result)
+  const result = { message, captcha: captchaCode }
+
+  // console.log('composeCaptchaMsg result: ', result)
   return result
 }
 
@@ -47,7 +50,7 @@ const composeCaptchaMsg = (): { message: string, captcha?: string } => {
  * @param content {string}
  */
 const sendOne = async (mobile: string | number, content: null | string = null): Promise<any> => {
-  console.log('sendOne: ', mobile, content)
+  // console.log('sendOne: ', mobile, content)
 
   let captcha
 
@@ -88,7 +91,7 @@ const sendOne = async (mobile: string | number, content: null | string = null): 
     result.content = content
   }
 
-  console.log('sendOne result: ', result)
+  // console.log('sendOne result: ', result)
 
   return result
 }
