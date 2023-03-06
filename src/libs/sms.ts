@@ -1,5 +1,17 @@
+/**
+ * 公共库：短信相关
+ * 
+ * author: Kamas Lau<kamaslau@dingtalk.com>
+ */
 class Validator {
+  mobile = (value: string): any => {
+    // 排除虚拟运营商和上网卡号段
+    const reg = /^1(3\d|5[0-35-9]|7[2-8]|8\d|9[0-35-9])\d{8}$/
+    const result = { valid: reg.test(value) }
 
+    console.log('mobile: ', result)
+    return result
+  }
 }
 
 /**

@@ -1,8 +1,6 @@
 /**
  * SMS/small_message 短信子路由/控制器模块
- *
- * 实现基础CRUD功能，并可扩展其它功能
- *
+ * 
  * 路由
  * https://github.com/koajs/router/blob/master/API.md
  *
@@ -26,7 +24,9 @@ Router.post('/', async ctx => {
   const createInput = ctx.request.body
 
   // 核验请求参数
-  if (createInput.mobile?.length !== 11) {
+  const validator = new Validator
+  const validResult = validator.mobile(createInput.mobile)
+  if (validResult.valid === false) {
     ctx.status = 406
     ctx.body.message = '未传入合规的请求参数'
 
