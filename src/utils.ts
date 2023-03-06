@@ -6,35 +6,6 @@ import type Koa from 'koa'
 import os from 'node:os'
 
 /**
- * 常用时间区间
- */
-interface timePeriods {
-  [index: string]: number
-}
-const periods: timePeriods = {
-  _h: 3600,
-  _d: 86400,
-  _week: 604800,
-  _m28d: 2419200,
-  _m29d: 2505600,
-  _m30d: 2592000,
-  _m31d: 2678400,
-  _y365d: 31536000,
-  _y366d: 31622400
-}
-
-/**
- * 获取当前时间戳
- *
- * 以当前本地语言显示
- *
- * @returns { string }
- */
-const getTimeString = (locale: string = process.env.LOCALE ?? 'en-US'): string => {
-  return new Date().toLocaleString(locale)
-}
-
-/**
  * 获取本地IP地址
  *
  * @param internal
@@ -174,10 +145,6 @@ const briefLog = async (ctx: Koa.Context, next: () => Promise<any>): Promise<voi
 }
 
 export {
-  periods,
-  getTimeString,
-  getLocalIP,
-  getClientIP,
   consoleInit,
   consoleStart,
   briefLog
