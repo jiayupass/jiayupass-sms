@@ -9,6 +9,7 @@
  * author: Kamas Lau<kamaslau@dingtalk.com>
  */
 import KoaRouter from '@koa/router'
+import { Validator } from '../libs/sms'
 import { sendOne } from '../libs/luosimao'
 
 const Router = new KoaRouter()
