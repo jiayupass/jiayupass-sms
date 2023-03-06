@@ -59,7 +59,7 @@ const sendOne = async (mobile: string | number, content: null | string = null): 
   }
 
   const params = {
-    mobile: mobile.toString(),
+    mobile: (mobile as number).toString(),
     message: `${content}${msgSuffix}`
   }
 
