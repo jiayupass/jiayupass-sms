@@ -12,6 +12,6 @@ import KoaRouter from '@koa/router'
 import sms from './sms'
 
 const Router = new KoaRouter()
-Router.use('/sms', sms.routes(), sms.allowedMethods())
+Router.use('/', sms.routes(), sms.allowedMethods())
 
 export default Router

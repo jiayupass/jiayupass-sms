@@ -113,8 +113,8 @@ const consoleInit = (): void => {
   console.log(
     '\x1b[32m%s\x1b[0m',
     '\n\n🟡 ============================',
-  `\n\n🚀 Launching ${process.env.npm_package_name as string} v${process.env.npm_package_version as string}`,
-  `\n\n✨ Node.js ${process.version} is started under ${process.env.NODE_ENV as string}\n`
+    `\n\n🚀 Launching ${process.env.npm_package_name as string} v${process.env.npm_package_version as string}`,
+    `\n\n✨ Node.js ${process.version} is started under ${process.env.NODE_ENV as string}\n`
   )
 }
 
@@ -123,7 +123,7 @@ const consoleInit = (): void => {
  *
  * @param graphqlPath {undefined|string} GraphQL服务路径
  */
-const consoleStart = (graphqlPath: undefined|string = undefined): void => {
+const consoleStart = (graphqlPath: undefined | string = undefined): void => {
   const serverPort = process.env.PORT ?? 3000
 
   console.log(

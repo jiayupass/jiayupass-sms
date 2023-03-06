@@ -35,9 +35,7 @@ LABEL maintainer="Kamas Lau<kamaslau@dingtalk.com>"
 
 WORKDIR /root/app
 
-COPY prisma ./prisma/
 COPY src ./src/
-COPY types ./types/
 # COPY .env_template ./.env
 COPY .env ./
 COPY package.json ./
@@ -46,7 +44,6 @@ COPY tsconfig.json ./
 
 RUN npm i -g pnpm@latest && \
   pnpm i && \
-  pnpm db:pull && \
   pnpm build
 
 EXPOSE 3000

@@ -14,20 +14,15 @@
   "main": "dist/app.js",
   "scripts": {
     "build": "tsc",
-    "db:pull": "npx prisma db pull && npx prisma generate",
-    "db:push": "npx prisma db push && npx prisma generate",
-    "format": "ts-standard --fix src/**/*.ts",
     "start": "NODE_ENV=production node dist/app.js",
     "start:dev": "cross-env nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "@koa/router": "^12.0.0",
-    "@prisma/client": "^4.11.0",
     "dotenv": "^16.0.3",
     "koa": "^2.14.1",
     "koa-bodyparser": "^4.3.0",
-    "node-cron": "^3.0.2",
     "node-fetch": "^2.6.7"
   },
   "devDependencies": {
@@ -35,7 +30,6 @@
     "@types/koa": "^2.13.5",
     "@types/koa-bodyparser": "^4.3.10",
     "@types/node": "latest",
-    "prisma": "^4.11.0",
     "typescript": "latest"
   }
 }
