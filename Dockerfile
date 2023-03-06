@@ -24,7 +24,7 @@
 #
 # Run with
 # docker container run --name <local-image-name> --restart=always -d -p 3000:3000 <container-name>
-FROM node:18-slim
+FROM node:lts-slim
 LABEL maintainer="Kamas Lau<kamaslau@dingtalk.com>"
 
 # Install some tools for test only.
