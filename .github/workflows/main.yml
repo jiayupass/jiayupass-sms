@@ -44,6 +44,6 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
   
   # TODO Deploy image
-  deploy:
-    runs-on: ubuntu-latest
+  #deploy:
+    #runs-on: ubuntu-latest
     
