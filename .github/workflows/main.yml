@@ -41,8 +41,8 @@ jobs:
         prefix: 'ENV_' # default | must be uppercase
       env:
         ENV_LUOSIMAO_TOKEN: ${{ secrets.LUOSIMAO_TOKEN }} # prefix + key = value
-        ENV_SMS_SUFFIX: ${{ var.SMS_SUFFIX }} # prefix is removed in .env file
-        ENV_VENDOR: ${{ var.VENDOR }}
+        ENV_SMS_SUFFIX: ${{ vars.SMS_SUFFIX }} # prefix is removed in .env file
+        ENV_VENDOR: ${{ vars.VENDOR }}
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v3
