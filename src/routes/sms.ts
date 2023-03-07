@@ -8,9 +8,10 @@
  */
 import KoaRouter from '@koa/router'
 import { Validator } from '../libs/sms'
-import { sendOne } from '../vendors/tencent'
+import Vendors from '../vendors'
 
 const Router = new KoaRouter()
+const { sendOne } = Vendors[process.env.VENDOR as string]
 
 /**
  * Create
