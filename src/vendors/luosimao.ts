@@ -21,7 +21,7 @@ const apiPathDict = {
 /**
  * 通用后缀（签名）
  */
-const msgSuffix: string = process.env.SMS_SUFFIX ?? ''
+const msgSuffix: string = `【${process.env.SMS_SUFFIX ?? ''}】`
 
 // 生成鉴权头信息
 const composeAuth = (): string => {

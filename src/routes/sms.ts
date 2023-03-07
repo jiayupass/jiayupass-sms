@@ -8,7 +8,7 @@
  */
 import KoaRouter from '@koa/router'
 import { Validator } from '../libs/sms'
-import { sendOne } from '../vendors/luosimao'
+import { sendOne } from '../vendors/tencent'
 
 const Router = new KoaRouter()
 

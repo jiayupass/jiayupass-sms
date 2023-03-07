@@ -1,9 +1,9 @@
 import crypto from 'node:crypto'
 
-const sha256 = (source: string): string => {
-  const hash = crypto.createHash('sha256').update(source).digest('hex')
+const sha256 = (source: string, encoding: any = 'hex'): string => {
+  const hash = crypto.createHash('sha256')
 
-  return hash
+  return hash.update(source).digest(encoding)
 }
 
 /**
@@ -11,12 +11,12 @@ const sha256 = (source: string): string => {
  *
  * @params key 加密用的密钥，留空或者设定为与密码所属数据相关的值，否则丢失后无法找回。
  *
- * https://nodejs.org/dist/latest-v14.x/docs/api/crypto.html#crypto_crypto
+ * https://nodejs.org/dist/latest-v19.x/docs/api/crypto.html#crypto_crypto
  */
-const sha256Hmac = (source: crypto.BinaryLike, key: string = ''): string => {
-  const hash = crypto.createHmac('sha256', key).update(source).digest('hex')
+const sha256Hmac = (source: crypto.BinaryLike, key: string = '', encoding: any = 'hex'): string => {
+  const hash = crypto.createHmac('sha256', key)
 
-  return hash
+  return hash.update(source).digest(encoding)
 }
 
 const base64 = (source: string): string => {
