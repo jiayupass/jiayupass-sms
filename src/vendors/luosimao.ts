@@ -25,8 +25,19 @@ const msgSuffix: string = process.env.SMS_SUFFIX ?? ''
 
 // 生成鉴权头信息
 const composeAuth = (): string => {
-  const authKey = `api:key-${process.env.API_TOKEN as string}`
+  const authKey = `api:key-${process.env.LUOSIMAO_TOKEN as string}`
   const result = `Basic ${base64(authKey)}`
+
+  return result
+}
+
+// 生成请求头信息
+const composeHeaders = (): any => {
+  const result = {
+    Authorization: composeAuth(),
+    Accept: 'application/json',
+    'Content-Type': 'application/x-www-form-urlencoded'
+  }
 
   return result
 }
@@ -61,11 +72,7 @@ const sendOne = async (mobile: string | number, content: null | string = null): 
     result = await fetch(
       apiPathDict.sendOne,
       {
-        headers: {
-          Authorization: composeAuth(),
-          Accept: 'application/json',
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
+        headers: composeHeaders(),
         method: 'POST',
         body: new URLSearchParams(params).toString()
       }
