@@ -36,9 +36,10 @@ Router.post('/', async ctx => {
 
   // 尝试发送短信
   const trySend = await sendOne(createInput.mobile, createInput.content)
-  if (trySend === null || trySend.error !== 0) {
+  console.log('trySend: ', trySend)
+  if (trySend === null || !trySend.succeed) {
     ctx.status = 500
-    ctx.body.message = `短信发送失败，供应商错误码: ${trySend.error as string}，${trySend.msg as string}`
+    ctx.body.message = `短信发送失败: ${trySend.message}`
 
     return
   }
@@ -51,7 +52,7 @@ Router.post('/', async ctx => {
     {
       ...createInput,
       timeSent: timestamp,
-      content: trySend.content,
+      content: trySend.content ?? undefined,
       captcha: trySend.captcha ?? undefined,
       timeExpire: trySend.captcha?.length > 0 ? timestamp + 60 * 3 : undefined // 默认3分钟内有效
     }

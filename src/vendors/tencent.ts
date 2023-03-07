@@ -166,33 +166,27 @@ const sendOne = async (mobile: string | number, content: null | string = null): 
     ).then(
       (res) => res.json()
     ).then(
-      (data) => conclude(data)
+      (data) => conclude(data, { captcha })
     )
   } catch (error) {
     console.error('sendOne error: ', error)
   }
 
-  // 若发送验证码成功，一并返回验证码
-  if (result.error === 0) {
-    result.captcha = captcha
-    result.content = content
-  }
-
-  // console.log('sendOne result: ', result)
   return result
 }
 
 // 发送后回调
-const conclude = (res): any => {
-  // console.log('conclude: ', res)
+const conclude = (res, payload): any => {
+  // console.log('conclude: ', res, payload)
 
   // 初步实现单条发送的回调处理，即仅处理SendStatusSet数组的第一条
   const data = res.Response.SendStatusSet[0]
-  console.log('conclude data: ', data)
+  // console.log('conclude data: ', data)
 
   const result = {
     succeed: data.Code === 'Ok',
-    message: data.Message ?? ''
+    message: data.Message ?? '',
+    ...payload
   }
 
   // console.log('conclude ends:', result)

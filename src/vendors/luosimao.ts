@@ -76,18 +76,29 @@ const sendOne = async (mobile: string | number, content: null | string = null): 
         method: 'POST',
         body: new URLSearchParams(params).toString()
       }
-    ).then((res) => res.json())
+    ).then(
+      (res) => res.json()
+    ).then(
+      (data) => conclude(data, { captcha })
+    )
   } catch (error) {
     console.error('sendOne error: ', error)
   }
 
-  // 若发送验证码成功，一并返回验证码
-  if (result.error === 0) {
-    result.captcha = captcha
-    result.content = content
+  return result
+}
+
+// 发送后回调
+const conclude = (res, payload): any => {
+  // console.log('conclude: ', res, payload)
+
+  const result = {
+    succeed: res.error === 0,
+    message: res.msg ?? '',
+    ...payload
   }
 
-  // console.log('sendOne result: ', result)
+  // console.log('conclude ends:', result)
   return result
 }
 
