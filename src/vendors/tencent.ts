@@ -119,7 +119,7 @@ const composeHeaders = (payload): any => {
     result[`X-TC-${item}`] = commonHeaders[item]
   }
 
-  console.log('composeHeaders: ', result)
+  // console.log('composeHeaders: ', result)
   return result
 }
 
@@ -151,7 +151,7 @@ const sendOne = async (mobile: string | number, content: null | string = null): 
       captcha
     ],
   }
-  console.log('params: ', params)
+  // console.log('params: ', params)
 
   let result: any = null
 
@@ -163,7 +163,11 @@ const sendOne = async (mobile: string | number, content: null | string = null): 
         method: 'POST',
         body: JSON.stringify(params)
       }
-    ).then((res) => res.json()).then(data => console.log(data))
+    ).then(
+      (res) => res.json()
+    ).then(
+      (data) => conclude(data)
+    )
   } catch (error) {
     console.error('sendOne error: ', error)
   }
@@ -175,6 +179,23 @@ const sendOne = async (mobile: string | number, content: null | string = null): 
   }
 
   // console.log('sendOne result: ', result)
+  return result
+}
+
+// 发送后回调
+const conclude = (res): any => {
+  // console.log('conclude: ', res)
+
+  // 初步实现单条发送的回调处理，即仅处理SendStatusSet数组的第一条
+  const data = res.Response.SendStatusSet[0]
+  console.log('conclude data: ', data)
+
+  const result = {
+    succeed: data.Code === 'Ok',
+    message: data.Message ?? ''
+  }
+
+  // console.log('conclude ends:', result)
   return result
 }
 
