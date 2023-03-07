@@ -7,14 +7,15 @@ import fetch from 'node-fetch'
 
 // Local
 import { URLSearchParams } from 'node:url'
-import { base64 } from './encrypt'
-import { composeCaptchaMsg } from './sms'
+import { base64 } from '../libs/encrypt'
+import { composeCaptchaMsg } from '../libs/sms'
 
 /**
  * API路径词典
  */
+const apiRootPath = 'https://sms-api.luosimao.com/v1/'
 const apiPathDict = {
-  sendOne: 'http://sms-api.luosimao.com/v1/send.json'
+  sendOne: `${apiRootPath}send.json`
 }
 
 /**
