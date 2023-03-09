@@ -54,6 +54,7 @@ jobs:
 
   # TODO Deploy image
   pull-and-run:
+    needs: [build-and-push]
     runs-on: ubuntu-latest
     steps:
       # https://github.com/marketplace/actions/docker-login
@@ -73,5 +74,7 @@ jobs:
           password: ${{ secrets.HOST_PASSWORD }} # Refer to the doc if key should be used instead of password
           script_stop: true # allow script to exit when error is met
           script: |
-            whoami
-            ls -al
+            if [ $(docker ps -aq --filter name=${{ env.IMAGE_NAME }}) ]; then
+              docker rm -f ${{ env.IMAGE_NAME }};
+              docker rmi -f ${{ env.IMAGE_NAME }};
+            fi
