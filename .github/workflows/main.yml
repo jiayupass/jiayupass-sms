@@ -35,6 +35,9 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          # set latest tag for default branch
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
 
       - name: Create .env file
         uses: skiddph/actions-env@v1.0.2
