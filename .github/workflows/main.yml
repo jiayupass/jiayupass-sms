@@ -72,6 +72,6 @@ jobs:
           username: ${{ secrets.HOST_USERNAME }}
           password: ${{ secrets.HOST_PASSWORD }} # Refer to the doc if key should be used instead of password
           script_stop: true # allow script to exit when error is met
-          script: |
+          script: |-
             if [ $(docker ps -aq --filter name=${{ env.IMAGE_NAME }}) ]; then docker rm -f ${{ }}; docker rmi -f ${{ env.IMAGE_NAME }}; fi
             docker run --name ${{ env.IMAGE_NAME }} --restart always -d -p ${{ vars.PORT }}:3000 ${{ env.IMAGE_NAME }}
