@@ -1,9 +1,12 @@
-# Dependency directories
-node_modules/
+# OS
+.DS_Store
+
+# Node.js
+.pnpm-debug.log
+node_modules
 
 # dotenv environment variables file
 .env
-.env.test
 
 # build / generate output
 dist

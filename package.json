@@ -1,12 +1,11 @@
 {
-  "name": "sms",
-  "license": "UNLICENSED",
-  "private": true,
+  "name": "jiayuguan-sms",
+  "license": "MIT",
   "version": "0.0.1",
-  "description": "服务端",
+  "description": "短信服务",
   "author": {
     "name": "Lau, Kamas",
-    "email": "kamaslau@outlook.com"
+    "email": "kamaslau@dingtalk.com"
   },
   "engines": {
     "node": "^18 || >=18"

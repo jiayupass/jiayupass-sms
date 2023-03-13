@@ -2,28 +2,25 @@
 # https://docs.docker.com/engine/reference/builder/
 #
 # Build with
-# docker build . -f Dockerfile -t <local-image-name>
+# docker build . -t <local-image-name>
 #
 # Tag with (remember to push at least 1 latest tag)
-# docker tag <local-image-name>:tagname liuyajie728/<image-name>:tagname 
+# docker tag <local-image-name>:tagname <org-name>/<image-name>:tagname 
 #
 # Push with
-# docker push liuyajie728/<local-image-name>:tag-name
+# docker push <org-name>/<local-image-name>:tag-name
 #
 # Pull with
-# docker pull liuyajie728/<local-image-name>:tag-name
-#
-# Scan (for safety) with
-# docker scan <local-image-name>
+# docker pull <org-name>/<local-image-name>:tag-name
 #
 # Export with
 # docker save <local-image-name> -o <local-image-name>.tar
 #
-# Load with
+# Load from file with
 # docker load -i <local-image-name>.tar
 #
 # Run with
-# docker container run --name <local-image-name> --restart=always -d -p 3000:3000 <container-name>
+# docker container run --name <container-name> --restart always --add-host=host.docker.internal:host-gateway --privileged -d -p 3000:3000 <local-image-name>
 FROM node:lts-slim
 LABEL maintainer="Kamas Lau<kamaslau@dingtalk.com>"
 
