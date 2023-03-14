@@ -5,7 +5,7 @@
     "typeRoots": ["node_modules/@types", "types"],
     "rootDir": "src",
     "outDir": "dist",
-    "lib": ["esnext", "es2021"],
+    "lib": ["ESNext"],
     "removeComments": true,
     "noImplicitAny": false
   }
