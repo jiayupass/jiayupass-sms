@@ -8,7 +8,7 @@ specifiers:
   '@types/node': latest
   dotenv: ^16.0.3
   koa: ^2.14.1
-  koa-bodyparser: ^4.3.0
+  koa-bodyparser: ^4.4.0
   node-fetch: ^2.6.9
   typescript: latest
 
@@ -16,7 +16,7 @@ dependencies:
   '@koa/router': 12.0.0
   dotenv: 16.0.3
   koa: 2.14.1
-  koa-bodyparser: 4.3.0
+  koa-bodyparser: 4.4.0
   node-fetch: 2.6.9
 
 devDependencies:
@@ -214,7 +214,7 @@ packages:
     dev: false
 
   /copy-to/2.0.1:
-    resolution: {integrity: sha1-JoD7uAaKSNCGVrYJgJK9r8kG9KU=}
+    resolution: {integrity: sha512-3DdaFaU/Zf1AnpLiFDeNCD4TOWe3Zl2RZaTzUvWiIk5ERzcCodOE20Vqq4fzCbNoHURFHT4/us/Lfq+S2zyY4w==}
     dev: false
 
   /debug/4.3.4:
@@ -344,7 +344,7 @@ packages:
     dev: false
 
   /inflation/2.0.0:
-    resolution: {integrity: sha1-i0F+R8KPklpFEz2RTKH9OJEH8w8=}
+    resolution: {integrity: sha512-m3xv4hJYR2oXw4o4Y5l6P5P16WYmazYof+el6Al3f+YlggGj6qT9kImBAnzDelRALnP5d3h4jGBPKzYCizjZZw==}
     engines: {node: '>= 0.8.0'}
     dev: false
 
@@ -366,8 +366,8 @@ packages:
       tsscmp: 1.0.6
     dev: false
 
-  /koa-bodyparser/4.3.0:
-    resolution: {integrity: sha512-uyV8G29KAGwZc4q/0WUAjH+Tsmuv9ImfBUF2oZVyZtaeo0husInagyn/JH85xMSxM0hEk/mbCII5ubLDuqW/Rw==}
+  /koa-bodyparser/4.4.0:
+    resolution: {integrity: sha512-AXPY7wwKZUmbgb8VkTEUFoRNOlx6aWRJwEnQD+zfNf33/7KSAkN4Oo9BqlIk80D+5TvuqlhpQT5dPVcyxl5Zsw==}
     engines: {node: '>=8.0.0'}
     dependencies:
       co-body: 6.1.0
@@ -560,7 +560,7 @@ packages:
     dev: true
 
   /unpipe/1.0.0:
-    resolution: {integrity: sha1-sr9O6FFKrmFltIF4KdIbLvSZBOw=}
+    resolution: {integrity: sha512-pjy2bYhSsufwWlKwPc+l3cN7+wuJlK6uz0YdJEOlQDbl6jo/YlPi4mb8agUkVC8BF7V8NuzeyPNqRksA3hztKQ==}
     engines: {node: '>= 0.8'}
     dev: false
 
