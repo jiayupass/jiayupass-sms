@@ -6,8 +6,8 @@
 import fetch from 'node-fetch'
 
 // Local
-import { sha256, sha256Hmac } from '../libs/encrypt'
-import { composeCaptchaMsg } from '../libs/sms'
+import { sha256, sha256Hmac } from '../libs/encrypt.js'
+import { composeCaptchaMsg } from '../libs/sms.js'
 
 /**
  * API路径词典

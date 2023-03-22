@@ -4,8 +4,8 @@ import Koa from 'koa'
 import bodyParser from 'koa-bodyparser'
 
 // Local
-import appRouter from './routes' // 路由
-import { consoleInit, consoleStart, briefLog } from './utils'
+import appRouter from './routes/index.js' // 路由
+import { consoleInit, consoleStart, briefLog } from './utils.js'
 
 // 输出程序初始化信息
 // console.log('process.env: ', process.env)

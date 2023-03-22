@@ -9,7 +9,7 @@
 import KoaRouter from '@koa/router'
 
 // Local
-import sms from './sms'
+import sms from './sms.js'
 
 const Router = new KoaRouter()
 Router.use('/', sms.routes(), sms.allowedMethods())

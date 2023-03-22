@@ -7,8 +7,8 @@ import fetch from 'node-fetch'
 
 // Local
 import { URLSearchParams } from 'node:url'
-import { base64 } from '../libs/encrypt'
-import { composeCaptchaMsg } from '../libs/sms'
+import { base64 } from '../libs/encrypt.js'
+import { composeCaptchaMsg } from '../libs/sms.js'
 
 /**
  * API路径词典

@@ -5,7 +5,12 @@
     "typeRoots": ["node_modules/@types", "types"],
     "rootDir": "src",
     "outDir": "dist",
-    "lib": ["ESNext"],
+    "lib": ["esnext"],
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "nodenext",
+    "esModuleInterop": true,
+    "types": ["node"],
     "removeComments": true,
     "noImplicitAny": false
   }

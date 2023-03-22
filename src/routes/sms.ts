@@ -7,8 +7,8 @@
  * author: Kamas Lau<kamaslau@dingtalk.com>
  */
 import KoaRouter from '@koa/router'
-import { Validator } from '../libs/sms'
-import Vendors from '../vendors'
+import { Validator } from '../libs/sms.js'
+import Vendors from '../vendors/index.js'
 
 const Router = new KoaRouter()
 const { sendOne } = Vendors[process.env.VENDOR as string]
